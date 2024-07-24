@@ -28,7 +28,7 @@ public class OrderService {
         stateMachine.sendEvent(Mono.just(
                 MessageBuilder.withPayload(OrderEvents.PAY).build())
         ).subscribe(result -> logger.info(result.getResultType().toString()));
-        logger.info("Final state {}", stateMachine.getState().getId());
+        logState();
         return stateMachine.getState().getId().toString();
     }
 
@@ -46,7 +46,7 @@ public class OrderService {
         stateMachine.sendEvent(Mono.just(
                 MessageBuilder.withPayload(OrderEvents.SHIP).build())
         ).subscribe(result -> logger.info(result.getResultType().toString()));
-        logger.info("Final state {}", stateMachine.getState().getId());
+        logState();
         return stateMachine.getState().getId().toString();
     }
 
@@ -55,7 +55,7 @@ public class OrderService {
         stateMachine.sendEvent(Mono.just(
                 MessageBuilder.withPayload(OrderEvents.VALIDATE).build())
         ).subscribe(result -> logger.info(result.getResultType().toString()));
-        logger.info("Final state {}", stateMachine.getState().getId());
+        logState();
         return stateMachine.getState().getId().toString();
     }
 
@@ -63,11 +63,15 @@ public class OrderService {
         logger.info("Initializing order saga");
         stateMachine = stateMachineFactory.getStateMachine();
         stateMachine.startReactively().subscribe();
-        logger.info("Final state {}", stateMachine.getState().getId());
+        logState();
     }
 
     private void stopOrderSaga() {
         logger.info("Stopping order saga");
         stateMachine.stopReactively().subscribe();
+    }
+
+    private void logState() {
+        logger.info("Final state {}", stateMachine.getState().getId());
     }
 }
