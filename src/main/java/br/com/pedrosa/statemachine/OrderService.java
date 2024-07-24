@@ -41,6 +41,15 @@ public class OrderService {
         return stateMachine.getState().getId().toString();
     }
 
+    public String cancelOrder() {
+        logger.info("Calcelling order saga");
+        stateMachine.sendEvent(Mono.just(
+                MessageBuilder.withPayload(OrderEvents.CANCEL).build())
+        ).subscribe(result -> logger.info(result.getResultType().toString()));
+        stopOrderSaga();
+        return stateMachine.getState().getId().toString();
+    }
+
     public String shipOrder() {
         logger.info("Shipping order saga");
         stateMachine.sendEvent(Mono.just(

@@ -18,6 +18,7 @@ import java.util.EnumSet;
 @Configuration
 @EnableStateMachineFactory
 public class StateMachineConfiguration extends EnumStateMachineConfigurerAdapter<OrdersStates, OrderEvents> {
+
     @Override
     public void configure(StateMachineStateConfigurer<OrdersStates, OrderEvents> states) throws Exception {
         states

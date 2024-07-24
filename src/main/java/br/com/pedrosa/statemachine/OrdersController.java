@@ -33,4 +33,9 @@ public class OrdersController {
         return orderService.completeOrder();
     }
 
+    @PostMapping("cancel")
+    String cancel() {
+        return orderService.cancelOrder();
+    }
+
 }
