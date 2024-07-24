@@ -6,7 +6,22 @@
 
 ## Enpoints de Orders
 
-Nova Ordem
+Novo Pedido
 ```
 POST /orders/new
+```
+
+Pagar
+```
+POST /orders/pay
+```
+
+Entregar
+```
+POST /orders/ship
+```
+
+Completo
+```
+POST /orders/complete
 ```
