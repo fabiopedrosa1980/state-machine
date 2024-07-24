@@ -6,7 +6,7 @@
 
 ## Transicoes Permitidas
 ```
- @Override
+    @Override
     public void configure(StateMachineTransitionConfigurer<OrdersStates, OrderEvents> transitions) throws Exception {
         transitions
                 .withExternal().source(OrdersStates.NEW).target(OrdersStates.VALIDATED).event(OrderEvents.VALIDATE)
@@ -52,6 +52,6 @@ POST /orders/complete
 
 Cancelar
 ```
-POST /orders/complete
+POST /orders/cancel
 ```
 
