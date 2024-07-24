@@ -28,7 +28,7 @@
 ```
 
 
-## Enpoints de Orders
+## Endpoints de Orders
 
 Novo Pedido
 ```
